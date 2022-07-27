@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Trails</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+  </head>
+<body>
+  <div class="header">
+
+  
+   <div class="container">    
+      <div class="navbar">
+         <div class="logo">
+            <img src="img/logo.jpg" width="50px">
+         </div>
+         <nav>
+           <ul id="MenuItems">
+             <li><a href="">Home</a></li>
+             <li><a href="login.php">Login</a></li>
+
+             <li><a href="signup.php">Sign Up</a></li>
+             <li><a href="AdminLoginn.php">Admin Login</a></li>
+             <a href="https://instagram.com/the.creative.trails?igshid=YmMyMTA2M2Y=">
+
+              <img src="img/insta.webp" width="30px">
+            </a>
+             <li><a href="">Reminder</a></li>
+             
+           </ul>
+         </nav>
+         <a href="login.php" >
+
+           <img src="https://toppng.com/uploads/preview/luxury-goods-tide-icon-comments-bag-cart-icon-11553457648rokwlpgpvq.png" width="30px">
+          </a>
+          <img src="img/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+        
+       <div class="row">
+         <div class="col2">
+           <h1>You design we create!<br>Personalised gift products</h1>
+           <p>Customised gift products on your footstep</p>
+           <a href="login.php"class="btn">Shop Now &#8594;</a>
+         </div>
+         <div class="col2">
+            <img src="img/IMG_6374.jpg">
+         </div>
+       </div>
+   </div>
+  </div>
+
+  
+    <!----- featured products ----->
+    
+   <div class="small-container">
+      <h2 class="title">Featured Products</h2>
+      <div class="row">
+        <div class="col4">
+          <img src="img/IMG_4997.jpg">
+          <h4>Mini Album</h4>
+        </div>
+        <div class="col4">
+          <img src="img/IMG_5127.jpg">
+          <h4>Explosion Box</h4>
+      
+        </div>
+        <div class="col4">
+          <img src="img/IMG_4584.JPG">
+          <h4>Explosion Box</h4>
+          
+        </div>
+        <div class="col4">
+          <img src="img/IMG_9232.jpg">
+          <h4>Gift Box</h4>
+          
+        </div>
+        <div class="col4">
+          <img src="img/IMG_4390.jpg">
+          <h4>Gift Box</h4>
+          
+        </div>
+        <div class="col4">
+          <img src="img/IMG_1277.JPG">
+          <h4>Chocolate Hamper</h4>
+          
+        </div>
+        <div class="col4">
+          <img src="img/IMG_2534.JPG">
+          <h4>Gift Box</h4>
+          
+        </div>
+        <div class="col4">
+          <img src="img/IMG_4403.jpg">
+          <h4>Chocolate Tower</h4>
+          
+        </div>
+    <!------ Offer------>
+    <div class="offer">
+      <div class="small-container">
+        <div class="row">
+          <div class="col2">
+            <img src="img/IMG_4584.JPG" class="offer-img">
+          </div>
+          <div class="col2">
+            <p>Exclusively Available</p>
+            <h1>Explosion Box</h1>
+            <small>Designed in green theme can be customised as per consumer preference.</small>
+            <a href="index3.html" class="btn">Buy Now &#8594;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-----js for toggle menu-->
+    <script>
+      var MenuItems = document.getElementById("MenuItems");
+      MenuItems.style.maxHeight = "0px";
+      function menutoggle(){
+        if(MenuItems.style.maxHeight == "0px"){
+          MenuItems.style.maxHeight = "200px";
+        }
+        else
+        {
+          MenuItems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+</body>
+</html>
+

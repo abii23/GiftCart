@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+  </head>
+<body>
+  
+
+  
+   <div class="container">    
+      <div class="navbar">
+         <div class="logo">
+            <img src="img/logo.jpg" width="50px">
+         </div>
+         <nav>
+           <ul id="MenuItems">
+             <li><a href="index.html">Home</a></li>
+            
+    
+           </ul>
+         </nav>
+         <img src="https://toppng.com/uploads/preview/luxury-goods-tide-icon-comments-bag-cart-icon-11553457648rokwlpgpvq.png" width="30px">
+         <img src="img/menu.png" class="menu-icon" onclick="menutoggle()">
+      </div>
+       
+   </div>
+  
+    <div class="small-container">
+      <div class="row row-2">
+        <h2>Frame</Frame></h2>
+        <select>
+            <option>Default Sorting</option>
+            <option>Sort by Price</option>
+            <option> Sort by rating</option>
+            <option>Sort by sale</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col4">
+          <img src="img/IMG_8076.jpg">
+          <p>Rs.600</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href="upload.html"class="btn">Customise Now &#8594;</a>
+         
+        </div>
+        <div class="col4">
+          <img src="img/IMG_5453.jpg">
+        
+          <p>Rs.400</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href=""class="btn">Customise Now &#8594;</a>
+         
+        </div>
+        <div class="col4">
+          <img src="img/IMG_4385.jpg">
+      
+          <p>Rs.700</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href=""class="btn">Customise Now &#8594;</a>
+         
+        </div>
+        <div class="col4">
+          <img src="img/IMG_4400.jpg">
+        
+          <p>Rs.800</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href=""class="btn">Customise Now &#8594;</a>
+         
+        </div>
+        <div class="col4">
+          <img src="img/IMG_4399.jpg">
+    
+          <p>Rs.700</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href=""class="btn">Customise Now &#8594;</a>
+         
+        </div>
+        <div class="col4">
+          <img src="img/7a40b882-2365-41fa-ab38-8a7e510f1a06.JPG">
+        
+          <p>Rs.600</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href=""class="btn">Customise Now &#8594;</a>
+         
+        </div>
+        <div class="col4">
+          <img src="img/36f60a02-c1c6-47dc-a56e-fe508699ecc1.JPG">
+      
+          <p>Rs.700</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href=""class="btn">Customise Now &#8594;</a>
+        </div>
+        <div class="col4">
+          <img src="img/IMG_4396.jpg">
+    
+          <p>Rs.700</p>
+          <a href=""class="btn">Add to cart</a>
+          <a href=""class="btn">Customise Now &#8594;</a>
+        </div>
+      </div>
+    </div>
+    <!-----js for toggle menu-->
+    <script>
+      var MenuItems = document.getElementById("MenuItems");
+      MenuItems.style.maxHeight = "0px";
+      function menutoggle(){
+        if(MenuItems.style.maxHeight == "0px"){
+          MenuItems.style.maxHeight = "200px";
+        }
+        else
+        {
+          MenuItems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+</body>
+</html>
