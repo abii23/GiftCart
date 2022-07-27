@@ -39,42 +39,85 @@
    <!------cart items----->
    <div class="small-container cart-page">
 
-    <table>
+   <table>
         <tr>
             <th>Chocolate</th>
             <th>Quantity</th>
             <th>Subtotal</th>
         </tr>
-        <tr>
-            <form action="" Method="POST">
-            <td>
+       
+        <div class="small-container">
+  <div class="row">
+            <form action="CustomizationAction.php" Method="POST">
+            <tr>
+                <?php
+          include("config.php");
 
+        
+								?>
                 <div class="cartcart-info">
 
-                   
-                    <img style=" height: 130%; width:70%;padding: 1px;" src="img/Diarymilk.webp">
-                    <div>
-                        <p>Diarymilk</p>
-                        <small>price:20</small>
-                        
+           <?php
+						$slno=1;
+							$result=mysqli_query($con,"select * from chocolate");
+							while($row=mysqli_fetch_array($result))
+							{
+								
+								?>
+                <div class="col4">
+                    <img style=" height: 90%; width:30%;padding: 1px;" src="./AAdmin/image/<?php echo $row['Image']; ?>">
+                  
+                        <p><?php echo $row["Chocolate_name"];?></p>
+                        <input type="hidden" name="Chocolate_name"value="<?php echo $row["Chocolate_name"];?>">
+                        <input type="hidden" name="Price"value="<?php echo $row["Price"];?>">
+                        <input type="hidden" name="Image"value="<?php echo $row["Image"];?>">
+
+                        <small>Price: Rs.<?php echo $row["Price"]; ?></small>
+                        <input type="hidden" name="Chocolate_id" value="<?php echo $row["id"];?>">
+
+                       <p><?php echo $row["Remarks"];?></p>
+                  <label for="">Quantity:</label><br>
+                    <input type="number" name="Quantity"><br>
+                    <label for="">Enter Description</label><br>
+                    <textarea name="description" id="" cols="30" rows="10"></textarea><br>
                         <br>
-                        <a href=""class="btn">Remove</a>
-                       
+                        
+                        <button type="Submit" value="Add to Cart" class='btn'></button>
+ 
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                   
+                    
+
+                        <!-- <button type="Submit"  Value="" class="btn">
+                            Edit
+                            
+                        </button> -->
+                    </form>
+                        
                     </div>
+        <?php
+                                     echo "</tr>";
+                                    
+                                }
+                            ?>
+                            </table>
                 </div>
-            </td>
-            <!-- <td><input type="number" name="quantity" value="1"></td>
-            <td>Rs.0</td> -->
-          <td>
+              </div>
+                
+            
+            
 
-              <button  type ="submit" name="btnSubmit1" class="btn">Add to cart</button>
-          </td>
+        <!-- </tr>
+        <tr> -->
 
-            </form> 
-        </tr>
-        <tr>
-
-
+                              </div>
+<!-- 
             <form action="" Method="POST">
             <td>
 
@@ -92,179 +135,32 @@
                     </div>
                 </div>
             </td>
-            <!-- <td><input type="number" name="quantity" value="1"></td>
-            <td>Rs.0</td> -->
+         
           <td>
 
               <button  type ="submit" name="btnSubmit2" class="btn">Add to cart</button>
           </td>
 
-            </form> 
-        </tr>
-        <tr>
+            </form>  -->
+        <!-- </tr>
+        <tr> -->
 
-            <form action="" Method="POST">
-            <td>
-
-                <div class="cart-info">
-
-                   
-                <img style=" height: 90%; width:30%;padding: 1px;" src="img/kitkat.webp">
-                    <div>
-                        <p>Kitkat</p>
-                        <small>price:25</small>
-                        
-                        <br>
-                        <a href=""class="btn">Remove</a>
-                       
-                    </div>
-                </div>
-            </td>
-            <!-- <td><input type="number" name="quantity" value="1"></td>
-            <td>Rs.0</td> -->
-          <td>
-
-              <button  type ="submit" name="btnSubmit3" class="btn">Add to cart</button>
-          </td>
-
-            </form> 
-
-
-        </tr>
-        <tr>
-            
-
-               
-
-            <form action="" Method="POST">
-            <td>
-
-                <div class="cart-info">
-
-                   
-                <img style=" height: 90%; width:30%;padding: 1px;" src="img/ferrero.jpg">
-                    <div>
-                        <p>Ferrero Rocher</p>
-                        <small>price:35</small>
-                        
-                        <br>
-                        <a href=""class="btn">Remove</a>
-                       
-                    </div>
-                </div>
-            </td>
-            <!-- <td><input type="number" name="quantity" value="1"></td>
-            <td>Rs.0</td> -->
-          <td>
-
-              <button  type ="submit" name="btnSubmit4" class="btn">Add to cart</button>
-          </td>
-
-            </form> 
-        </tr>
-        <tr>
            
 
-            
-            <form action="" Method="POST">
-            <td>
+         
+           
 
-                <div class="cart-info">
-
-                   
-                <img style=" height: 90%; width:30%;padding: 1px;" src="img/raffello.jpg">
-                    <div>
-                        <p>Raffello</p>
-                        <small>price:35</small>
-                        
-                        <br>
-                        <a href=""class="btn">Remove</a>
-                       
-                    </div>
-                </div>
-            </td>
-            <!-- <td><input type="number" name="quantity" value="1"></td>
-            <td>Rs.0</td> -->
-          <td>
-
-              <button  type ="submit" name="btnSubmit5" class="btn">Add to cart</button>
-          </td>
-
-            </form> 
-        </tr>
-        <tr>
+           
         
 
 
             
-            <form action="" Method="POST">
-            <td>
-
-                <div class="cart-info">
-
-                   
-                <img style=" height: 90%; width:30%;padding: 1px;" src="img/Galaxy.webp">
-                    <div>
-                        <p>Galaxy</p>
-                        <small>price:45</small>
-                        
-                        <br>
-                        <a href=""class="btn">Remove</a>
-                       
-                    </div>
-                </div>
-            </td>
-            <!-- <td><input type="number" name="quantity" value="1"></td>
-            <td>Rs.0</td> -->
-          <td>
-
-              <button  type ="submit" name="btnSubmit6" class="btn">Add to cart</button>
-          </td>
-
-            </form> 
-        </tr>
-        <tr>
-
-            <form action="" Method="POST">
-            <td>
-
-                <div class="cart-info">
-
-                   
-                <img style=" height: 80%; width:20%;padding: 1px;" src="img/snickers.jpg">
-                    <div>
-                        <p>Snickers</p>
-                        <small>price:45</small>
-                        
-                        <br>
-                        <a href=""class="btn">Remove</a>
-                       
-                    </div>
-                </div>
-            </td>
-            <!-- <td><input type="number" name="quantity" value="1"></td>
-            <td>Rs.0</td> -->
-          <td>
-
-              <button  type ="submit" name="btnSubmit7" class="btn">Add to cart</button>
-          </td>
-
-            </form> 
-
-        </tr>
+           
        
     </table>
 
      <div class="total-price">
-        <table>
-        
-            <tr>
-                <td>Total</td>
-                <td>Rs.0</td>
-
-            </tr>
-
-        </table>
+       
      </div>
    </div> 
 

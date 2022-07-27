@@ -15,44 +15,49 @@
   
 
   
-   <div class="container">    
-      <div class="navbar">
-         <div class="logo">
-            <img src="img/logo.jpg" width="50px">
-         </div>
-         <nav>
-           <ul id="MenuItems">
-             <li><a href="index.html">Home</a></li>
-          
-           </ul>
-         </nav>
-         <a href="Cart.php">
-         <img src="https://toppng.com/uploads/preview/luxury-goods-tide-icon-comments-bag-cart-icon-11553457648rokwlpgpvq.png" width="30px">
-        </a>
-         <img src="/Day 1/image/menu.png" class="menu-icon" onclick="menutoggle()">
-      </div>
-       
-   </div>
-  
+   
+
+
     <div class="small-container">
       <div class="row">
+   <?php
+          include("config.php");
+
+        
+								?>
+           <?php
+						$slno=1;
+							$result=mysqli_query($con,"select * from category");
+							while($row=mysqli_fetch_array($result))
+							{
+								
+								?>
+
+    
         <div class="col4">
-          <img src="img/IMG_1280.jpg">
-          <h4>GIFT HAMPERS</h4>
-          <a href="product.php"class="btn">Shop Now &#8594;</a>
+            <form action="Editcategory.php" method="POST">
+
+                <img src="./AAdmin/image/<?php echo $row['Image']; ?>">
+                <h4 ><?php echo $row["Category_Name"];?></h4>
+                <input  type="hidden" name="CategoryId" value="<?php echo $row["Cat_id"];?>">
+                <a type="submit"  value="" href='Product.php?Cat_id=<?php echo $row['Cat_id']?>'   class="btn">Shop Now &#8594;</a>
+               
+
+                <!-- <td><a href='Editcategory.php?Cat_Id=".$row ['Cat_id'].">Edit</a> -->
+            </form>
+           
+
         </div>
-        <div class="col4">
-          <img src="img/IMG_2532.jpg">
-          <h4>GIFT BOX</h4>
-          <a href="product1.php"class="btn">Shop Now &#8594;</a>
-        </div>
-        <div class="col4">
-          <img src="img/IMG_4396.jpg">
-          <h4>FRAME</h4>
-          <a href="frame.html"class="btn">Shop Now &#8594;</a>
-        </div>
+       
+        <?php
+                                    // echo "</tr>";
+                                    
+                                }
+                            ?>
+            </table>
       </div>
     </div>
+
     <!-----js for toggle menu-->
     <script>
       var MenuItems = document.getElementById("MenuItems");
