@@ -33,18 +33,50 @@
       </div>
        
    </div>
-  
+   
+   
+   <div class="small-containe">
+       <div class="row">
+                <form action="" method="POST">
+      <select  name="Category_id"  class="form-control" >
+         <option value=0>------Select----</option>
+      <?php
+         include ("config.php"); 
+         $result=mysqli_query($con, "SELECT * from category ");
+        // echo "SELECT * from tbl_candidatebasicdetails WHERE username='$username' AND password='$password'";
+         //$row=mysqli_fetch_array($result);
+         while($row=mysqli_fetch_array($result)) 
+         { 
 
+        ?>
+          <option value="<?php echo $row['Cat_id'] ?>"  > <?php echo $row['Category_Name'];?> </option>
+        <?php }
+    
+    ?> 
+    <input type="submit" name="selectedCat">
+</form>
+    </select>
+</div>
+</div>
+<BR></BR>
    <div class="small-container">
       <div class="row">
    <?php
+
           include("config.php");
 
         
 								?>
            <?php
+           if(isset($_POST['selectedCat']))
+           {
+$EnterCategoryId =$_POST['Category_id'];
+
+
+          
+
 						$slno=1;
-							$result=mysqli_query($con,"select * from category");
+							$result=mysqli_query($con,"select * from productname where Category_id='$EnterCategoryId'");
 							while($row=mysqli_fetch_array($result))
 							{
 								
@@ -52,44 +84,35 @@
 
     
         <div class="col4">
-            <form action="Editcategory.php" method="POST">
+            <form action="EditProduct.php" method="POST">
 
                 <img src="./image/<?php echo $row['Image']; ?>">
-                <h4 ><?php echo $row["Category_Name"];?></h4>
-                <input  type="hidden" name="CategoryId" value="<?php echo $row["Cat_id"];?>">
+                <h4 ><?php echo $row["ProductName"];?></h4>
+                <p><?php echo $row["ProductsDetails"];?></p>
+                <label for="">Price:</label><br>
+                <p><?php echo $row["Price"];?></p>
+                <label for="">remarks</label>
+                <p><?php echo $row["Remarks"];?></p>
+
+                <input  type="hidden" name="CategoryId" value="<?php echo $row["ProductId"];?>">
                 <input type="submit"  value="Edit &#8594;" href=""   class="btn"></input>
                
 
                 <!-- <td><a href='Editcategory.php?Cat_Id=".$row ['Cat_id'].">Edit</a> -->
-            </form>
-            <form action=""method="POST">
+         
 
-              <button name="delete" class="btn" value ="delete">Delete
-              <input  type="hidden" name="CategoryId" value="<?php echo $row["Cat_id"];?>">
+                            </form>
 
-                </button>
-              </form>
-<?php
-include("config.php");
-if(isset($_POST['delete']))
-{
-  $EnterCat_id=$_POST["CategoryId"];
+<form action="DeleteProduct.php"method="POST">
 
-  $save=mysqli_query($con,"DELETE FROM `category` WHERE Cat_id='$EnterCat_id'");
-  if($save)
-  {
-    echo "<script> alert('Successfully Deleted');window.location='dashboard.html'</script>";
-  
-  }
-  else
-  {
-    echo "<script> alert('Failed');</script>";
+    <input   type="hidden" name="CategoryId" value="<?php echo $row["ProductId"];?>">
+    <button type="submit" name="delete3" class="btn" value ="delete">Delete
 
-  }
+  </button>
+</form>
 
 
-}
-?>
+
         </div>
         <!-- <div class="col4">
           <img src="img/IMG_2532.jpg">
@@ -103,7 +126,7 @@ if(isset($_POST['delete']))
         </div> -->
         <?php
                                     // echo "</tr>";
-                                    
+}   
                                 }
                             ?>
             </table>
