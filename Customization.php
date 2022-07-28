@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Products</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Customization1.scss">
+
+    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
@@ -39,32 +43,28 @@
    <!------cart items----->
    <div class="small-container cart-page">
 
-   <table>
-        <tr>
-            <th>Chocolate</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-        </tr>
+     
+     <div class="small-container">
        
-        <div class="small-container">
-  <div class="row">
-            <form action="CustomizationAction.php" Method="POST">
-            <tr>
-                <?php
+       <div class="row">
+         <table>
+           <tr>
+             <?php
           include("config.php");
-
-        
-								?>
+          
+          
+          ?>
                 <div class="cartcart-info">
-
-           <?php
+                  
+                  <?php
 						$slno=1;
-							$result=mysqli_query($con,"select * from chocolate");
-							while($row=mysqli_fetch_array($result))
-							{
-								
-								?>
+            $result=mysqli_query($con,"select * from chocolate");
+            while($row=mysqli_fetch_array($result))
+            {
+              
+              ?>
                 <div class="col4">
+                  <form action="CustomizationAction.php" Method="POST">
                     <img style=" height: 90%; width:30%;padding: 1px;" src="./AAdmin/image/<?php echo $row['Image']; ?>">
                   
                         <p><?php echo $row["Chocolate_name"];?></p>
@@ -75,15 +75,26 @@
                         <small>Price: Rs.<?php echo $row["Price"]; ?></small>
                         <input type="hidden" name="Chocolate_id" value="<?php echo $row["id"];?>">
 
-                       <p><?php echo $row["Remarks"];?></p>
-                  <label for="">Quantity:</label><br>
-                    <input type="number" name="Quantity"><br>
-                    <label for="">Enter Description</label><br>
-                    <textarea name="description" id="" cols="30" rows="10"></textarea><br>
-                        <br>
+
+                       <p><?php echo $row["Remarks"];?></p> <br>
+                  <label for="">Quantity:</label>
+                    <input style="border:1px solid #ff0000" type="number" name="Quantity" required><br>
+                    
                         
-                        <button type="Submit" value="Add to Cart" class='btn'></button>
- 
+                        <!-- <bttton name="Customize" value="Add to Cart" class='btn'>Cutomize</bttton> -->
+             <?php
+             
+             $_Product_id=$_GET["Product_id"];
+           
+             $chocolate_name=$row["Chocolate_name"];
+             $price=$row["Price"];
+             ?>
+             <input type="hidden" name="Product_id" value="<?php echo $_Product_id; ?>">
+                        <button type="submit" class="btn"  value="">Add to cart
+                          <!-- <a href='Customization1.php?Product_id="<?php echo $_Product_id; ?>"Chocolate="<?php echo $chocolate_name; ?>"Price="<?php echo $price; ?>"'> -->
+                            <!-- Customize
+                          </a> -->
+                        </button>
                         
                         
                         
@@ -107,8 +118,108 @@
                                 }
                             ?>
                             </table>
+
+                              </div>
+                              </div>
+
+                              
+    <aside style="width:8%;Margin-top:-107%">
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal"></div>
+          <div class="summary-promo hide">
+            <div class="promo-title">Promotion</div>
+            <div class="promo-value final-value" id="basket-promo"></div>
+      
+          <?php
+          include("config.php");
+
+        
+								?>
+           <?php
+						// $slno=1;
+						// 	$result=mysqli_query($con,"SELECT  `Subtotal` FROM `cart` WHERE User_id='22222'");
+            //   $sum=0;
+            //   while($row=mysqli_fetch_array($result))
+						// 	{
+
+                
+            //     $subtotal=$row["Subtotal"];
+            //     $sum=$sum+$subtotal;
+
+            //   }
+
+            if(isset($_POST['Customize']))
+            {
+
+             $Name=$_POST['Chocolate_name'];
+
+             $Sname=$sname.$Name;
+            //  $id = implode(",", $_POST['Chocolate_name']);
+             $Price=$_POST['Price'];
+  $int_price = (int)$Price;
+
+             $Quantity=$_POST['Quantity'];
+             $int_Quantity=(int)$Quantity;
+             $chocolateid=$_POST['Chocolate_id'];
+
+
+$sum=$int_Quantity*$int_price;
+              
+            
+             
+								
+								?>
+          </div>
+        </div>
+        <?php
+            // }
+            // $Naam=array($Name);
+            // array_push($Naam, $Name);
+            
+        //  foreach($Name as $item ){
+        
+         
+        ?>
+        
+        <div class="total-value final-value" id="basket-total"></div>
+        <div class="summary-total">
+          <div class="total-title"><?php
+         
+          echo $Sname;
+          
+          
+          ?> *  <?php echo $Quantity;?></div>
+          <?php
+            // }
+      
+      
+          ?>
+  
+          <div class="total-value final-value" id="basket-total"><?php echo $sum;?></div>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total"><?php echo $sum;?></div>
+            <div class="summary-checkout">
+              <button class="checkout-cta">Go to Secure Checkout</button>
+              </div>
+        </div>
+        </div>
+          <?php
+          
+           
+        
+        }
+          
+          ?>
+      </aside>
                 </div>
               </div>
+
+
                 
             
             
@@ -117,6 +228,9 @@
         <tr> -->
 
                               </div>
+
+
+                              
 <!-- 
             <form action="" Method="POST">
             <td>
@@ -193,223 +307,6 @@
 
 
 
-<?php
-
-
-include("config.php");
-          if(isset($_POST['btnSubmit1']))
-          {
-            $user_id=22222;
-            $chocolate_name="Dairy Milk";
-            $Price=20;
-            $Category ="Gift hampers";
-           
-
-            $Quantity=$_POST['quantity'];
-            $Subtotal=0;
-
-            $save=mysqli_query($con,"insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')");
-        //   echo "insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')";
-          
-            if($save)
-            {
-            
-              echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-            }
-            else
-            {
-            
-                echo "<script>alert('FAILED!!!'); </script>";
-            }
-
-
-          
-          }
-
-
-          if(isset($_POST['btnSubmit2']))
-          {
-            $user_id=22222;
-            $chocolate_name="Dairy Milk Silk";
-            $Price=80;
-            $Category ="Gift hampers";
-           
-
-            $Quantity=$_POST['quantity'];
-            $Subtotal=0;
-
-            $save=mysqli_query($con,"insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')");
-        //   echo "insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')";
-          
-            if($save)
-            {
-            
-              echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-            }
-            else
-            {
-            
-                echo "<script>alert('FAILED!!!'); </script>";
-            }
-
-
-          
-          }
-
-          if(isset($_POST['btnSubmit3']))
-          {
-            $user_id=22222;
-            $chocolate_name="Kitkat";
-            $Price=25;
-            $Category ="Gift hampers";
-           
-
-            $Quantity=$_POST['quantity'];
-            $Subtotal=0;
-
-            $save=mysqli_query($con,"insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')");
-        //   echo "insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')";
-          
-            if($save)
-            {
-            
-              echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-            }
-            else
-            {
-            
-                echo "<script>alert('FAILED!!!'); </script>";
-            }
-
-
-          
-          }
-          if(isset($_POST['btnSubmit4']))
-          {
-            $user_id=22222;
-            $chocolate_name="Ferrero Rocher";
-            $Price=35;
-            $Category ="Gift hampers";
-           
-
-            $Quantity=$_POST['quantity'];
-            $Subtotal=0;
-
-            $save=mysqli_query($con,"insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')");
-        //   echo "insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')";
-          
-            if($save)
-            {
-            
-              echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-            }
-            else
-            {
-            
-                echo "<script>alert('FAILED!!!'); </script>";
-            }
-
-
-          
-          }
-
-          if(isset($_POST['btnSubmit5']))
-          {
-            $user_id=22222;
-            $chocolate_name="Raffello";
-            $Price=35;
-            $Category ="Gift hampers";
-           
-
-            $Quantity=$_POST['quantity'];
-            $Subtotal=0;
-
-            $save=mysqli_query($con,"insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')");
-        //   echo "insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')";
-          
-            if($save)
-            {
-            
-              echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-            }
-            else
-            {
-            
-                echo "<script>alert('FAILED!!!'); </script>";
-            }
-
-
-          
-          }
-          if(isset($_POST['btnSubmit6']))
-          {
-            $user_id=22222;
-            $chocolate_name="Galaxy";
-            $Price=45;
-            $Category ="Gift hampers";
-           
-
-            $Quantity=$_POST['quantity'];
-            $Subtotal=0;
-
-            $save=mysqli_query($con,"insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')");
-        //   echo "insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')";
-          
-            if($save)
-            {
-            
-              echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-            }
-            else
-            {
-            
-                echo "<script>alert('FAILED!!!'); </script>";
-            }
-
-
-          
-          }
-          if(isset($_POST['btnSubmit7']))
-          {
-            $user_id=22222;
-            $chocolate_name="Snickers";
-            $Price=45;
-            $Category ="Gift hampers";
-           
-
-            $Quantity=$_POST['quantity'];
-            $Subtotal=0;
-
-            $save=mysqli_query($con,"insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')");
-        //   echo "insert into chocolate(User_id,Chocolate_name,Quantity,Subtotal,price,Category)values('$user_id','$chocolate_name','$Quantity','$Subtotal','$Price','$Category')";
-          
-            if($save)
-            {
-            
-              echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-            }
-            else
-            {
-            
-                echo "<script>alert('FAILED!!!'); </script>";
-            }
-
-
-          
-          }
-
-
-
-
-
-?>
 
 
 

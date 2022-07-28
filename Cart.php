@@ -28,6 +28,8 @@
         </ul>
       </div>
 <table style="width:70%">
+<form action="" method="POST">
+
 
 
 <?php
@@ -48,7 +50,7 @@
         <div class="item">
         <div class="product-image">
           <form action="" method="POST">
-            <img name="Image"  src="<?php echo $row["Image"];?>" alt="Placholder Image 2" style=" border: 1px solid #aaa;width: 110%;height:20%;">
+            <img name="Image"  src="./AAdmin/image/<?php echo $row['Image']; ?>" alt="Placholder Image 2" style=" border: 1px solid #aaa;width: 110%;height:20%;">
           </div>
           <div class="product-details">
 
@@ -131,6 +133,150 @@ if(isset($_POST['delete']))
         </table>
             
 </table>
+<br>
+<h1><strong style="font-size:160%;color:#980000" >Customized Products</strong></h1>
+<br>
+<table style="width:70%">
+
+
+<?php
+          include("config.php");
+          ?>
+          <?php
+          $slno=1;
+          $result=mysqli_query($con,"select * from category");
+          while($row22=mysqli_fetch_array($result))
+          {
+        $Category11_id=$row22['Category_Name'];
+       
+
+        // $result=mysqli_query($con,"select * from customized_cart where Category_name='$Category11_id'");
+        // while($row22=mysqli_fetch_array($result))
+        //   {
+        //   $test=$row22["Category_name"];
+        //   echo "test";
+        //   echo $test;
+        //   }
+        //   }
+
+      
+      ?>
+  
+                
+          <div class="basket-product">
+        <div class="item">
+        <div class="product-image">
+<h2><? echo $row['Category_Name']; ?></h2>
+          </div>
+          </div>
+          </div>
+           <?php
+						$slno=1;
+            $result=mysqli_query($con,"select * from customized_cart where User_id='22222'  ");
+            while($row=mysqli_fetch_array($result))
+							{
+								$test=$row["Category_name"];
+               
+								?>
+          
+          
+          <div class="basket-product">
+        <div class="item">
+        <div class="product-image">
+          <form action="" method="POST">
+            <img name="Image"  src="./AAdmin/image/<?php echo $row['Image']; ?>" alt="Placholder Image 2" style=" border: 1px solid #aaa;width: 110%;height:20%;">
+          </div>
+          <div class="product-details">
+
+          <input name="whatecer" type="hidden" value="<?php echo $row["id"];?>">
+         
+
+             <h1><strong style="font-size:160%;color:#980000"><span class="item-quantity"></span> <?php echo $row["Category_name"];?></strong> </h1>
+            <p><strong><?php echo $row["Product"];?></strong></p>
+            <!-- <p>Product Code - 232321939</p> -->
+          </div>
+        </div>
+        <div >
+        <input name="Price1" type="" value="<?php echo $row["id"];?>">
+
+          <input  name="Price1" type="" class="price" value="<?php echo $row["Price"];?>"></div>
+        <div class="quantity">
+          <input name="quantity" type="number" value="<?php echo $row["Quantity"];?>" min="1" class="quantity-field">
+
+
+  <input type="submit" name="calculate" value="Check Price" style="marigin-top:20px;"></input>
+
+<?php
+include("config.php");
+if(isset($_POST['calculate']))
+{
+  
+  $fff=$_POST["whatecer"];            //product id 
+  $txt_quantity=$_POST['quantity'];
+  $txt_Price=$_POST['Price1'];
+  // echo $txt_Price;
+  $int_price = (int)$txt_Price;
+
+  // echo gettype($int_price);
+
+// echo "update cart set Quantity='$txt_quantity' where id='$fff'";
+$subtotal=$int_price*$txt_quantity;
+echo $subtotal;
+$save=mysqli_query($con,"update cart set Quantity='$txt_quantity',Subtotal='$subtotal' where id='$fff'");
+
+echo "<script>window.location='Cart.php'</script>";
+}
+
+?>
+<div></div>
+
+        </div>
+        <div class="subtotal" id="subtotal"><?php echo $row["Subtotal"];?></div>
+        <div class="remove">
+          <button name="delete" >Remove</button>
+           
+<?php
+
+
+if(isset($_POST['delete']))
+{
+  $fff=$_POST["whatecer"];         //product id
+  
+  $save=mysqli_query($con,"DELETE FROM `cart` WHERE `cart`.`id` = '$fff'");
+  
+  echo "<script>window.location='Cart.php'</script>";
+  
+}
+
+?>
+
+
+          </form>  
+       
+        
+            </div>
+      </div>
+
+          
+          
+         
+        </table>
+<?php
+      echo "</tr>";
+      
+    }
+    
+  
+    
+  
+  ?>
+            
+         
+</table>
+     <?php
+      
+  }
+      ?>   
 
 
 
@@ -144,53 +290,76 @@ if(isset($_POST['delete']))
           
 
           
-            
-    <aside style="width:8%">
-      <div class="summary">
-        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
-        <div class="summary-subtotal">
-          <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="basket-subtotal"></div>
-          <div class="summary-promo hide">
-            <div class="promo-title">Promotion</div>
-            <div class="promo-value final-value" id="basket-promo"></div>
+      <aside style="width:8%">
+        <div class="summary">
+          <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+          <div class="summary-subtotal">
+            <div class="subtotal-title">Subtotal</div>
+            <div class="subtotal-value final-value" id="basket-subtotal"></div>
+            <div class="summary-promo hide">
+              <div class="promo-title">Promotion</div>
+              <div class="promo-value final-value" id="basket-promo"></div>
+            </div>
           </div>
-        </div>
-      
-        <div class="summary-total">
-          <div class="total-title">Total</div>
-          <?php
-          include("config.php");
+          <div class="summary-total">
+            <!-- <Form method="Post" Action=""> -->
+              
+            
+            <div class="total-title">Total</div>
+             <?php
+            include("config.php");
+            // session_start();
+            
 
-        
-								?>
-           <?php
-						$slno=1;
-							$result=mysqli_query($con,"SELECT  `Subtotal` FROM `cart` WHERE User_id='22222'");
-              $sum=0;
-              while($row=mysqli_fetch_array($result))
-							{
 
-                
-                $subtotal=$row["Subtotal"];
-                $sum=$sum+$subtotal;
+                  ?> 
+            <?php
+              $slno=1;
+                $result=mysqli_query($con,"SELECT  `Subtotal` FROM `cart` WHERE User_id='22222'");
+                $sum=0;
+                while($row=mysqli_fetch_array($result))
+                {
 
-              }
+                  
+                  $subtotal=$row["Subtotal"];
+                  $sum=$sum+$subtotal;
+
+                }
+                $result=mysqli_query($con,"SELECT  `Subtotal` FROM `customized_cart` WHERE User_id='22222'");
              
-								
-								?>
-          <div class="total-value final-value" id="basket-total"><?php echo $sum;?></div>
+                while($row3=mysqli_fetch_array($result))
+                {
+  
+                  
+                  $subtotal=$row3["Subtotal"];
+                  $sum=$sum+$subtotal;
+  
+                }
+              
+                  
+                  ?>
+                  <input type="hidden"  name="cart_id" value="<?php echo $row["id"]; ?>">
+                  <input type="hidden"  name="Customizedcart_id" value="<?php echo $row3["id"]; ?>">
+
+            <div class="total-value final-value" id="basket-total"><?php echo $sum;?></div>
+          </div>
+          <div class="summary-checkout">
+            <button type="Submit" name="Checkout" class="checkout-cta">Go to Secure Checkout</button>
+            
+          </div>
+          </Form>
         </div>
-        <div class="summary-checkout">
-          <button class="checkout-cta">Go to Secure Checkout</button>
-          
-        </div>
-      </div>
-    </aside>
+      </aside>
   </main>
 </body>
 
 </html>
+
+<?php
+
+
+
+?>
 
 
 

@@ -91,7 +91,10 @@ $EnterCategoryId =$_GET['Cat_id'];
 
                             </form>
 
-
+<?php
+session_start();
+// $_SESSION["Product_id"] = $row['ProductId'];
+?>
     <a href='Customization.php?Product_id=<?php echo $row['ProductId']?>' class="btn">
 
       Customize &#8594;
