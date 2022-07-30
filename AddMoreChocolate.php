@@ -64,7 +64,7 @@
               
               ?>
                 <div class="col4">
-                  <form action="" Method="POST">
+                  <form action="AddMoreChocolateAction.php" Method="POST">
                     <img style=" height: 90%; width:30%;padding: 1px;" src="./AAdmin/image/<?php echo $row['Image']; ?>">
                   
                         <p><?php echo $row["Chocolate_name"];?></p>
@@ -78,17 +78,23 @@
 
                        <p><?php echo $row["Remarks"];?></p> <br>
                   <label for="">Quantity:</label>
-                    <input style="border:1px solid #ff0000" type="number" name="Quantity"><br>
+                    <input style="border:1px solid #ff0000" type="number" name="Quantity" required><br>
                     
                         
                         <!-- <bttton name="Customize" value="Add to Cart" class='btn'>Cutomize</bttton> -->
              <?php
-             $_Product_id=$_GET["Product_id"];
+             
+             $_Product_id=$_GET["Product_ID"];
+           
              $chocolate_name=$row["Chocolate_name"];
              $price=$row["Price"];
-            
              ?>
-                        <a class="btn" href='Customization1.php?Product_id="<?php echo $_Product_id; ?>Chocolate="<?php echo $chocolate_name; ?>"Price="<?php echo $price; ?>"'>Customize  </a>
+             <input type="hidden" name="Product_id" value="<?php echo $_Product_id; ?>">
+                        <button type="submit" class="btn"  value="">Add to cart
+                          <!-- <a href='Customization1.php?Product_id="<?php echo $_Product_id; ?>"Chocolate="<?php echo $chocolate_name; ?>"Price="<?php echo $price; ?>"'> -->
+                            <!-- Customize
+                          </a> -->
+                        </button>
                         
                         
                         
@@ -133,15 +139,21 @@
         
 								?>
            <?php
-					
+						
 
-$_Product_id=$_GET['Product_id'];
+            if(isset($_POST['Customize']))
+            {
 
-$_Product_id=$_GET["Product_id"];
-echo "h";
-$chocolate_name=$row["Chocolate_name"];
-$price=$row["Price"];
-$Quantity=$_POST['Quantity'];
+             $Name=$_POST['Chocolate_name'];
+
+             $Sname=$sname.$Name;
+            //  $id = implode(",", $_POST['Chocolate_name']);
+             $Price=$_POST['Price'];
+  $int_price = (int)$Price;
+
+             $Quantity=$_POST['Quantity'];
+             $int_Quantity=(int)$Quantity;
+             $chocolateid=$_POST['Chocolate_id'];
 
 
 $sum=$int_Quantity*$int_price;
@@ -152,19 +164,21 @@ $sum=$int_Quantity*$int_price;
 								?>
           </div>
         </div>
-       
-
-       
-             
+        <?php
+            // }
+            // $Naam=array($Name);
+            // array_push($Naam, $Name);
+            
+        //  foreach($Name as $item ){
         
          
-       
+        ?>
         
         <div class="total-value final-value" id="basket-total"></div>
         <div class="summary-total">
           <div class="total-title"><?php
          
-          echo $chocolate_name;
+          echo $Sname;
           
           
           ?> *  <?php echo $Quantity;?></div>
@@ -188,7 +202,7 @@ $sum=$int_Quantity*$int_price;
           
            
         
-        // }
+        }
           
           ?>
       </aside>
@@ -279,6 +293,13 @@ $sum=$int_Quantity*$int_price;
        </select>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

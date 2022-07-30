@@ -1,3 +1,9 @@
+<?php
+session_start();
+$userid=$_SESSION["user_id"];
+?>
+
+
 <html lang="en">
 
 <head>
@@ -16,6 +22,8 @@
         <label for="promo-code">Enter a promotional code</label>
         <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
         <button class="promo-code-cta">Apply</button>
+
+        <a  style="margin-left:30%;font-size:140%"  href="user.html">Home</a>
       </div>
       <div class="basket-labels">
         <ul>
@@ -39,7 +47,7 @@
 								?>
            <?php
 						$slno=1;
-							$result=mysqli_query($con,"select * from cart");
+							$result=mysqli_query($con,"select * from cart where User_id='$userid'");
 							while($row=mysqli_fetch_array($result))
 							{
 								
@@ -172,11 +180,15 @@ if(isset($_POST['delete']))
           </div>
            <?php
 						$slno=1;
-            $result=mysqli_query($con,"select * from customized_cart where User_id='22222'  ");
+            $result=mysqli_query($con,"select * from customized_cart where User_id='$userid'  ");
             while($row=mysqli_fetch_array($result))
 							{
 								$test=$row["Category_name"];
+                $prNAme=$row['ProductName'];
+                $result1=mysqli_query($con,"select * from productname where ProductId='$prNAme'");
+                $row3=mysqli_fetch_array($result1);
                
+
 								?>
           
           
@@ -204,7 +216,8 @@ if(isset($_POST['delete']))
           <input name="quantity" type="number" value="<?php echo $row["Quantity"];?>" min="1" class="quantity-field">
 
 
-  <input type="submit" name="calculate" value="Check Price" style="marigin-top:20px;"></input>
+  <!-- <input type="submit" name="calculate" value="Check Price" style="marigin-top:20px;"></input> -->
+           
 
 <?php
 include("config.php");
@@ -212,6 +225,7 @@ if(isset($_POST['calculate']))
 {
   
   $fff=$_POST["whatecer"];            //product id 
+
   $txt_quantity=$_POST['quantity'];
   $txt_Price=$_POST['Price1'];
   // echo $txt_Price;
@@ -222,7 +236,8 @@ if(isset($_POST['calculate']))
 // echo "update cart set Quantity='$txt_quantity' where id='$fff'";
 $subtotal=$int_price*$txt_quantity;
 echo $subtotal;
-$save=mysqli_query($con,"update cart set Quantity='$txt_quantity',Subtotal='$subtotal' where id='$fff'");
+$save=mysqli_query($con,"update customized_cart set Quantity='$txt_quantity',Subtotal='$subtotal' where id='$fff'");
+// echo "update cart set Quantity='$txt_quantity',Subtotal='$subtotal' where id='$fff'";
 
 echo "<script>window.location='Cart.php'</script>";
 }
@@ -232,17 +247,29 @@ echo "<script>window.location='Cart.php'</script>";
 
         </div>
         <div class="subtotal" id="subtotal"><?php echo $row["Subtotal"];?></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a style="font-size:120%;margin-right:30%" href="AddMoreChocolate.php?Product_ID='<?php echo $row["id"]; ?>'" class="btn">ADD Chocolate</a>
         <div class="remove">
           <button name="delete" >Remove</button>
            
+          </form>  
 <?php
-
 
 if(isset($_POST['delete']))
 {
+ 
   $fff=$_POST["whatecer"];         //product id
   
-  $save=mysqli_query($con,"DELETE FROM `cart` WHERE `cart`.`id` = '$fff'");
+  $save=mysqli_query($con,"DELETE FROM `customized_cart` WHERE `id` = '$fff'");
+
+  // echo "DELETE FROM `customized_cart` WHERE `cart`.`id` = '$fff'";
   
   echo "<script>window.location='Cart.php'</script>";
   
@@ -251,7 +278,6 @@ if(isset($_POST['delete']))
 ?>
 
 
-          </form>  
        
         
             </div>
@@ -314,8 +340,11 @@ if(isset($_POST['delete']))
 
                   ?> 
             <?php
+            
+            $userid=$_SESSION["user_id"];
+            
               $slno=1;
-                $result=mysqli_query($con,"SELECT  * FROM `cart` WHERE User_id='22222'");
+                $result=mysqli_query($con,"SELECT  * FROM `cart` WHERE User_id='$userid'");
                 $sum=0;
                 while($row=mysqli_fetch_array($result))
                 {
@@ -342,7 +371,7 @@ if(isset($_POST['delete']))
                 ?>
                 <?php 
                 
-                $result=mysqli_query($con,"SELECT  * FROM `customized_cart` WHERE User_id='22222'");
+                $result=mysqli_query($con,"SELECT  * FROM `customized_cart` WHERE User_id='$userid'");
                 
                 while($row3=mysqli_fetch_array($result))
                 {
@@ -381,10 +410,8 @@ if(isset($_POST['delete']))
           <div class="summary-checkout">
             <button type="Submit" name="Checkout" class="checkout-cta">
               
-            <?php 
-            echo "d";
-            ?>
-              <a href="Booking.php?cart_id='<?php echo $row['id'];?>'">
+            
+              <a style="color:white" href="Booking.php?cart_id='<?php echo $row['id'];?>'">
 
                 Go to Secure Checkout
               </a>

@@ -89,6 +89,7 @@
              $chocolate_name=$row["Chocolate_name"];
              $price=$row["Price"];
              ?>
+
              <input type="hidden" name="Product_id" value="<?php echo $_Product_id; ?>">
                         <button type="submit" class="btn"  value="">Add to cart
                           <!-- <a href='Customization1.php?Product_id="<?php echo $_Product_id; ?>"Chocolate="<?php echo $chocolate_name; ?>"Price="<?php echo $price; ?>"'> -->
@@ -139,17 +140,7 @@
         
 								?>
            <?php
-						// $slno=1;
-						// 	$result=mysqli_query($con,"SELECT  `Subtotal` FROM `cart` WHERE User_id='22222'");
-            //   $sum=0;
-            //   while($row=mysqli_fetch_array($result))
-						// 	{
-
-                
-            //     $subtotal=$row["Subtotal"];
-            //     $sum=$sum+$subtotal;
-
-            //   }
+						
 
             if(isset($_POST['Customize']))
             {

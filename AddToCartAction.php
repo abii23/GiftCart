@@ -1,7 +1,8 @@
 <?php
+session_start();
 include("config.php");
 
-$user_id=22222;
+$user_id=$_SESSION["user_id"];;
 $category_name=$_POST["CategoryId"];
 $product_name=$_POST["ProductName"];
 $Price=$_POST["Price"];

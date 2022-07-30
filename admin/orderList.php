@@ -1,3 +1,8 @@
+<?php
+session_start();
+$userid=$_SESSION["user_id"];
+?>
+
 <html lang="en">
 
 <head>
@@ -304,7 +309,7 @@ if(isset($_POST['delete']))
                 $sum=$sum+$subtotal;
 
               }
-              $result=mysqli_query($con,"SELECT  `Subtotal` FROM `Chocolate` WHERE User_id='22222'");
+              $result=mysqli_query($con,"SELECT  `Subtotal` FROM `Chocolate` WHERE User_id='$userid'");
              
               while($row=mysqli_fetch_array($result))
 							{

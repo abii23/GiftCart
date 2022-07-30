@@ -1,3 +1,8 @@
+<?php
+session_start();
+$userid=$_SESSION["user_id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,7 +111,7 @@
           include("config.php");
           if(isset($_POST['btnsubmit1']))
           {
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Frame";
             $Price=500;
             $product ="Includes 15 diarymilk";
@@ -134,7 +139,7 @@
           if(isset($_POST['btnsubmit2']))
           {
 
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Frame";
             $Price=1500;
             $product ="Includes 20 toblerone";
@@ -159,7 +164,7 @@
          if(isset($_POST['btnsubmit3']))
           {
             
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Frame";
             $Price=100;
             $product ="Include something";

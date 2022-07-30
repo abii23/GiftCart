@@ -1,3 +1,8 @@
+<?php
+session_start();
+$userid=$_SESSION["user_id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,7 +157,7 @@
           include("config.php");
           if(isset($_POST['btnsubmit1']))
           {
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=900;
             $product ="Includes 3 diarymilk silk,2 kitkat,2 pack of ferrero";
@@ -181,7 +186,7 @@
           if(isset($_POST['btnsubmit2']))
           {
 
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=2300;
             $product ="Includes 10 Kitkat,10 Snickers and 10 Dairymilk";
@@ -207,7 +212,7 @@
          if(isset($_POST['btnsubmit3']))
           {
             
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=1100;
             $product ="Includes 15 Kitakt ,2 pack of Ferrero and a Frame";
@@ -234,7 +239,7 @@
           if(isset($_POST['btnsubmit3']))
           {
             
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=800;
             $product =">Include 2 Diarymilk silk and 2 Kikat";
@@ -260,7 +265,7 @@
           if(isset($_POST['btnsubmit3']))
           {
             
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=2100;
             $product ="Includes 3 Bounty,5 Raffello";
@@ -286,7 +291,7 @@
           if(isset($_POST['btnsubmit3']))
           {
             
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=1300;
             $product ="Explosion box with 12 kitkat and 10 Diarymik";
@@ -312,7 +317,7 @@
           if(isset($_POST['btnsubmit3']))
           {
             
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=1000;
             $product ="Classy Bouquet with 13 Dairymilk";
@@ -338,7 +343,7 @@
           if(isset($_POST['btnsubmit3']))
           {
             
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Box";
             $Price=900;
             $product ="Includes 1 Dairy Milk Silk,2 Kitkat 3 pack of Ferrero and a mini scrapbook";

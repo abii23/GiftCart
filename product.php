@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+$userid=$_SESSION["user_id"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +98,7 @@ $EnterCategoryId =$_GET['Cat_id'];
                             </form>
 
 <?php
-session_start();
+
 // $_SESSION["Product_id"] = $row['ProductId'];
 ?>
     <a href='Customization.php?Product_id=<?php echo $row['ProductId']?>' class="btn">
@@ -147,7 +153,7 @@ session_start();
           include("config.php");
           if(isset($_POST['btnSubmit1']))
           {
-            $user_id=22222;
+            $user_id=$userid;
             $category_name="Gift Hampers";
             $Price=3000;
             $product ="Includes 2 Ferrero, 2 Toblerone, 10 Galaxy, 10 Bounty";
@@ -173,187 +179,7 @@ session_start();
 
           
           }
-        //   if(isset($_POST['btnSubmit2']))
-        //   {
-
-        //     $user_id=22222;
-        //     $category_name="Gift Hampers";
-        //     $Price=2500;
-        //     $product ="Includes 2 toblerone, 2 Dairy Milk Silk, 6 Galaxy, 3 Snickers, 3 Mars with scented roses";
-        //     $Quantity=1;
-        //     $Subtotal=0;
-        //     $image ="img/IMG_4391.jpg"; 
-
-        //     $save=mysqli_query($con,"insert into cart(User_id,Category_name,Product,price,Quantity,Subtotal,Image)values('$user_id','$category_name','$product','$Price','$Quantity','$Subtotal','$image')");
-        //     if($save)
-        //     {
-            
-        //       echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-        //     }
-        //     else
-        //     {
-            
-        //         echo "<script>alert('FAILED!!!'); </script>";
-        //     }
-        //   }
-        //  if(isset($_POST['btnSubmit3']))
-        //   {
-            
-        //     $user_id=22222;
-        //     $category_name="Gift Hampers";
-        //     $Price=4000;
-        //     $product ="Include 20 Dairy Milk, 20 Galaxy, 16 Snickers, 15 Ferrero decorated with scented roses";
-        //     $Quantity=1;
-        //     $Subtotal=0;
-        //     $image ="img/IMG_4403.jpg"; 
-
-        //     $save=mysqli_query($con,"insert into cart(User_id,Category_name,Product,price,Quantity,Subtotal,Image)values('$user_id','$category_name','$product','$Price','$Quantity','$Subtotal','$image')");
-        //     if($save)
-        //     {
-            
-        //       echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-        //     }
-        //     else
-        //     {
-            
-        //         echo "<script>alert('FAILED!!!'); </script>";
-        //     }
-
-
-        //   }
-        //   if(isset($_POST['btnSubmit3']))
-        //   {
-            
-        //     $user_id=22222;
-        //     $category_name="Gift Hampers";
-        //     $Price=1500;
-        //     $product ="Includes 7 Dairy Milk, 2 Toblerone, 2 pack Ferrero, 3 Snickers";
-        //     $Quantity=1;
-        //     $Subtotal=0;
-        //     $image ="img/IMG_6081.jpg"; 
-
-        //     $save=mysqli_query($con,"insert into cart(User_id,Category_name,Product,price,Quantity,Subtotal,Image)values('$user_id','$category_name','$product','$Price','$Quantity','$Subtotal','$image')");
-        //     if($save)
-        //     {
-            
-        //       echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-        //     }
-        //     else
-        //     {
-            
-        //         echo "<script>alert('FAILED!!!'); </script>";
-        //     }
-
-
-        //   }
-
-        //   if(isset($_POST['btnSubmit3']))
-        //   {
-            
-        //     $user_id=22222;
-        //     $category_name="Gift Hampers";
-        //     $Price=1300;
-        //     $product ="Includes Dairy Milk Silk, Galaxy, Bounty, Ferrero with a Card";
-        //     $Quantity=1;
-        //     $Subtotal=0;
-        //     $image ="img/IMG_5594.jpg"; 
-
-        //     $save=mysqli_query($con,"insert into cart(User_id,Category_name,Product,price,Quantity,Subtotal,Image)values('$user_id','$category_name','$product','$Price','$Quantity','$Subtotal','$image')");
-        //     if($save)
-        //     {
-            
-        //       echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-        //     }
-        //     else
-        //     {
-            
-        //         echo "<script>alert('FAILED!!!'); </script>";
-        //     }
-
-
-        //   }
-
-        //   if(isset($_POST['btnSubmit3']))
-        //   {
-            
-        //     $user_id=22222;
-        //     $category_name="Gift Hampers";
-        //     $Price=4500;
-        //     $product ="Love shaped hamper filled with small size galaxy and toblerone. Square shaped hamper filled with ferrero ,Raffello and Patchi";
-        //     $Quantity=1;
-        //     $Subtotal=0;
-        //     $image ="img/IMG_8060.jpg"; 
-
-        //     $save=mysqli_query($con,"insert into cart(User_id,Category_name,Product,price,Quantity,Subtotal,Image)values('$user_id','$category_name','$product','$Price','$Quantity','$Subtotal','$image')");
-        //     if($save)
-        //     {
-            
-        //       echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-        //     }
-        //     else
-        //     {
-            
-        //         echo "<script>alert('FAILED!!!'); </script>";
-        //     }
-
-
-        //   }
-
-        //   if(isset($_POST['btnSubmit3']))
-        //   {
-            
-        //     $user_id=22222;
-        //     $category_name="Gift Hampers";
-        //     $Price=1800;
-        //     $product ="Love shaped hamper includes 20 kitkat,9 Ferrero with Red and white Scented roses";
-        //     $Quantity=1;
-        //     $Subtotal=0;
-        //     $image ="img/06307be3-a97b-4904-8391-2eda6b74aea4.jpg"; 
-
-        //     $save=mysqli_query($con,"insert into cart(User_id,Category_name,Product,price,Quantity,Subtotal,Image)values('$user_id','$category_name','$product','$Price','$Quantity','$Subtotal','$image')");
-        //     if($save)
-        //     {
-            
-        //       echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-        //     }
-        //     else
-        //     {
-            
-        //         echo "<script>alert('FAILED!!!'); </script>";
-        //     }
-
-
-        //   }
-
-        //   if(isset($_POST['btnSubmit3']))
-        //   {
-            
-        //     $user_id=22222;
-        //     $category_name="Gift Hampers";
-        //     $Price=1400;
-        //     $product ="Includes 16 kitkat decorated with scented roses.";
-        //     $Quantity=1;
-        //     $Subtotal=0;
-        //     $image ="img/add8d8f2-bacc-4d38-a576-a9fe1169f94b.jpg"; 
-
-        //     $save=mysqli_query($con,"insert into cart(User_id,Category_name,Product,price,Quantity,Subtotal,Image)values('$user_id','$category_name','$product','$Price','$Quantity','$Subtotal','$image')");
-        //     if($save)
-        //     {
-            
-        //       echo "<script>alert('ADDED TO CART!!!'); </script>";
-
-        //     }
-        //     else
-        //     {
-            
-        //         echo "<script>alert('FAILED!!!'); </script>";
-        //     }
+        
 
 
           

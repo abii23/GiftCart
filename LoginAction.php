@@ -10,8 +10,8 @@ $result=mysqli_query($con, "SELECT * from user_signup WHERE Email='$username' AN
 $row=mysqli_fetch_array($result);
 if($row>0) 
 { 
-    // $_SESSION["appno"]=$row["applicationnumber"];
-    // echo $_SESSION["appno"];
+    $_SESSION["user_id"]=$row["User_id"];
+    
     header("location:./user.html");
 }
 else

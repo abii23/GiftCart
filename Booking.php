@@ -1,4 +1,9 @@
 
+
+<?php
+session_start();
+$userid=$_SESSION["user_id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,11 +86,11 @@
             include("config.php");
 
               $slno=1;
-                $result=mysqli_query($con,"SELECT  * FROM `cart` WHERE User_id='22222'");
+                $result=mysqli_query($con,"SELECT  * FROM `cart` WHERE User_id='$userid'");
                 $sum=0;
                 $cartid=$_GET['cart_id'];
 
-                echo "j";
+                
                 echo $cartid;
               
                 while($row=mysqli_fetch_array($result))
@@ -114,7 +119,7 @@
                 <?php 
                             include("config.php");
 
-                $result=mysqli_query($con,"SELECT  * FROM `customized_cart` WHERE User_id='22222'");
+                $result=mysqli_query($con,"SELECT  * FROM `customized_cart` WHERE User_id='$userid'");
                 
                 while($row3=mysqli_fetch_array($result))
                 {
@@ -158,7 +163,7 @@
 						$slno=1;
                         $sum=0;
                         $sum1=0;
-            $result=mysqli_query($con,"select * from customized_cart where User_id='22222'  ");
+            $result=mysqli_query($con,"select * from customized_cart where User_id='$userid'  ");
             while($row=mysqli_fetch_array($result))
 							{
 								$test=$row["Category_name"];
@@ -174,7 +179,7 @@
 
                 $slno=1;
                 $sum=0;
-    $result=mysqli_query($con,"select * from cart where User_id='22222'  ");
+    $result=mysqli_query($con,"select * from cart where User_id='$userid'  ");
     while($row1=mysqli_fetch_array($result))
                     {
                         $test=$row1["Category_name"];
