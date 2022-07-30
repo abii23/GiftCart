@@ -79,7 +79,8 @@ $EnterCategoryId =$_POST['Category_id'];
 							$result=mysqli_query($con,"select * from productname where Category_id='$EnterCategoryId'");
 							while($row=mysqli_fetch_array($result))
 							{
-								
+								$product_id=$row['ProductId'];
+               
 								?>
 
     
@@ -95,10 +96,10 @@ $EnterCategoryId =$_POST['Category_id'];
                 <p><?php echo $row["Remarks"];?></p>
 
                 <input  type="hidden" name="CategoryId" value="<?php echo $row["ProductId"];?>">
-                <input type="submit"  value="Edit &#8594;" href=""   class="btn"></input>
-               
+                <!-- <input type="submit"  value="Edit &#8594;" href=EditProduct.php?Product_id=<?php echo $row['ProductId']?>'  class="btn"></input> -->
+               <a class='btn' href='EditProduct.php?Product_id=<?php echo $row['ProductId']?>'>edit &#8594; </a>
 
-                <!-- <td><a href='Editcategory.php?Cat_Id=".$row ['Cat_id'].">Edit</a> -->
+                <!-- <td><a href='Editcategory.php?Cat_Id=".$row ['Cat_id'].">Edit</input> -->
          
 
                             </form>

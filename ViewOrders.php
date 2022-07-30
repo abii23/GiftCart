@@ -20,7 +20,8 @@ $userid=$_SESSION["user_id"];
       <div class="basket-module">
         <label for="promo-code">Enter a promotional code</label>
         <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
-        <button class="promo-code-cta">Apply</button>
+        <button class="promo-code-cta">Apply</button> 
+        <a style="margin-left:40%;font-size:120%;color:F76D1E" href="user.html">Home</a>
       </div>
       <div class="basket-labels">
         <ul>
@@ -64,6 +65,7 @@ $userid=$_SESSION["user_id"];
                                       while($row=mysqli_fetch_array($result))
                                       
                                       {
+                                          $book_ID=$row['id'];
                                           ?>
           
           <div class="basket-product">
@@ -78,10 +80,9 @@ $userid=$_SESSION["user_id"];
                                            
                                            $category_name=$row['Category_name'];   
                                  
-                                       $result=mysqli_query($con,"select * from category where Cat_id='$category_name'");
-                                       $row2=mysqli_fetch_array($result);
+                                       $result1=mysqli_query($con,"select * from category where Cat_id='$category_name'");
+                                       $row2=mysqli_fetch_array($result1);
                                  
-                                           $book_ID=$row['id'];
 
 
          ?>
@@ -150,27 +151,6 @@ echo "<script>window.location='Cart.php'</script>";
         <a href="ViewOrderDetails.php?Booking_id='<?php echo $book_ID ?>'">
             View order Details
         </a>  
-       
-
-
-
-
-
-        
-<?php
-
-
-if(isset($_POST['delete']))
-{
-  $fff=$_POST["whatecer"];         //product id
-  
-  $save=mysqli_query($con,"DELETE FROM `cart` WHERE `cart`.`id` = '$fff'");
-
-  echo "<script>window.location='Cart.php'</script>";
-
-}
-
-  ?>
 
 
           

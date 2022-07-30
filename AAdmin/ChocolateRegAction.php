@@ -11,8 +11,6 @@ $filename=$_FILES["uploadfile"]["name"];
 $tempname=$_FILES["uploadfile"]["tmp_name"];
 $folder = "./image/" . $filename;
 
-echo $filename;
-echo $tempname;
 
 
 $sql=mysqli_query($con,"SELECT  count(*) as count FROM productname WHERE Category_Name='$EnterCategoryName'");
@@ -21,7 +19,7 @@ $rowset=mysqli_fetch_array($sql);
 if($rowset['count']>0)
 {
 
-	echo"<script>alert('Product alraedy exist');window.location='viewcourse.php'</script>";
+	echo"<script>alert('Product alraedy exist');window.location='ChocolateReg.php'</script>";
 }
 else
 {	
