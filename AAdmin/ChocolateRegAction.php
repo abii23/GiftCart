@@ -27,7 +27,7 @@ else
 {	
 $save=mysqli_query($con,"insert into chocolate(Chocolate_name,Price,Remarks,Image)values('$EnterProductName','$EnterProductPrice','$EnterProductRemarks','$filename')");
  
-echo "insert into chocolate(Chocolate_name,Price,Remarks,Image)values('$EnterProductName','$EnterProductPrice','$EnterProductRemarks','$filename')";
+// echo "insert into chocolate(Chocolate_name,Price,Remarks,Image)values('$EnterProductName','$EnterProductPrice','$EnterProductRemarks','$filename')";
 mysqli_query($con, $sql);
 if (move_uploaded_file($tempname, $folder)) {
     // echo "<h3>  Image uploaded successfully!</h3>";
@@ -36,7 +36,7 @@ if (move_uploaded_file($tempname, $folder)) {
    
     
 }
-echo "<script>alert('Category Registration Successfull!!!'); window.location='dashboard.html'</script>";
+echo "<script>alert('Chocolate Registration Successfull!!!'); window.location='dashboard.html'</script>";
 
 }
 

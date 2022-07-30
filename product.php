@@ -70,7 +70,7 @@ $EnterCategoryId =$_GET['Cat_id'];
             <form action="AddToCartAction.php" method="POST" >
 
                 <img  src="./AAdmin/image/<?php echo $row['Image']; ?>">
-                <input type="hidden" name="Image" value="./AAdmin/image/<?php echo $row['Image']; ?>">
+                <input type="hidden" name="Image" value="<?php echo $row['Image']; ?>">
                 <input type="hidden" name="ProductName" value="<?php echo $row["ProductName"];?>"/>
                 <input type="hidden" name="ProductsDetails" value="<?php echo $row["ProductsDetails"]?>"/>
                 <p><?php echo $row["ProductName"];?></p>

@@ -77,6 +77,75 @@
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                 </label>
                 <input type="submit" value="Continue to checkout" class="btn">
+                <?php
+            include("config.php");
+
+              $slno=1;
+                $result=mysqli_query($con,"SELECT  * FROM `cart` WHERE User_id='22222'");
+                $sum=0;
+                $cartid=$_GET['cart_id'];
+
+                echo "j";
+                echo $cartid;
+              
+                while($row=mysqli_fetch_array($result))
+                {
+
+                  
+                  $subtotal=$row["Subtotal"];
+                  $sum=$sum+$subtotal;
+                  ?>
+                  
+                  <input type="hidden"  name="User_id" value="<?php echo $row['User_id']; ?>">
+                  <input type="hidden"  name="Category_name" value="<?php echo $row["Category_name"]; ?>">
+                  <input type="hidden"  name="Product_name" value="<?php echo $row["ProductName"]; ?>">
+                  <input type="hidden"  name="ProductDetails" value="<?php echo $row["Product"]; ?>">
+
+                  <input type="hidden"  name="Price" value="<?php echo $row["price"]; ?>">
+                  <input type="hidden"  name="Quantity" value="<?php echo $row["Quantity"]; ?>">
+                  <input type="hidden"  name="Subtotal" value="<?php echo $row["Subtotal"]; ?>">
+                  <input type="hidden"  name="Image" value="<?php echo $row["Image"]; ?>">
+
+                  <?php
+
+                }
+
+                ?>
+                <?php 
+                            include("config.php");
+
+                $result=mysqli_query($con,"SELECT  * FROM `customized_cart` WHERE User_id='22222'");
+                
+                while($row3=mysqli_fetch_array($result))
+                {
+                  
+                  
+                  $subtotal=$row3["Subtotal"];
+                  $sum=$sum+$subtotal;
+                  ?>
+
+                  <!-- <input type="hidden"  name="cart_id" value="<?php echo $row["id"]; ?>"> -->
+
+
+
+                  <!-- <input type="hidden"  name="Customizedcart_id" value="<?php echo $row3["id"]; ?>"> -->
+                  <input type="hidden"  name="User_id" value="<?php echo $row3['User_id']; ?>">
+                  <input type="hidden"  name="Category_name" value="<?php echo $row3["Category_name"]; ?>">
+                  <input type="hidden"  name="Product_name" value="<?php echo $row3["ProductName"]; ?>">
+                  <input type="hidden"  name="ProductDetails" value="<?php echo $row3["Product"]; ?>">
+
+                  <input type="hidden"  name="Price" value="<?php echo $row3["Price"]; ?>">
+                  <input type="hidden"  name="Quantity" value="<?php echo $row3["Quantity"]; ?>">
+                  <input type="hidden"  name="Subtotal" value="<?php echo $row3["Subtotal"]; ?>">
+                  <input type="hidden"  name="Image" value="<?php echo $row3["Image"]; ?>">
+                  <?php
+  
+                }
+              
+                  
+                  ?>
+
+
             </form>
         </div>
     </div>

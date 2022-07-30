@@ -12,8 +12,7 @@ $filename=$_FILES["uploadfile"]["name"];
 $tempname=$_FILES["uploadfile"]["tmp_name"];
 $folder = "./image/" . $filename;
 
-echo $filename;
-echo $tempname;
+
 
 
 $sql=mysqli_query($con,"SELECT  count(*) as count FROM productname WHERE Category_Name='$EnterCategoryName'");
@@ -38,7 +37,7 @@ if (move_uploaded_file($tempname, $folder)) {
    
     
 }
-echo "<script>alert('Category Registration Successfull!!!'); window.location='dashboard.html'</script>";
+echo "<script>alert('Product Registration Successfull!!!'); window.location='dashboard.html'</script>";
 
 }
 

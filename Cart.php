@@ -57,7 +57,7 @@
           <input name="whatecer" type="hidden" value="<?php echo $row["id"];?>">
          
 
-             <h1><strong style="font-size:160%;color:#980000"><span class="item-quantity"></span> <?php echo $row["Category_name"];?></strong> </h1>
+             <h1><strong style="font-size:160%;color:#980000"><span class="item-quantity"></span> <?php echo $row["ProductName"];?></strong> </h1>
             <p><strong><?php echo $row["Product"];?></strong></p>
             <!-- <p>Product Code - 232321939</p> -->
           </div>
@@ -191,7 +191,7 @@ if(isset($_POST['delete']))
           <input name="whatecer" type="hidden" value="<?php echo $row["id"];?>">
          
 
-             <h1><strong style="font-size:160%;color:#980000"><span class="item-quantity"></span> <?php echo $row["Category_name"];?></strong> </h1>
+             <h1><strong style="font-size:160%;color:#980000"><span class="item-quantity"></span> <?php echo $row["ProductName"];?></strong> </h1>
             <p><strong><?php echo $row["Product"];?></strong></p>
             <!-- <p>Product Code - 232321939</p> -->
           </div>
@@ -302,7 +302,7 @@ if(isset($_POST['delete']))
             </div>
           </div>
           <div class="summary-total">
-            <!-- <Form method="Post" Action=""> -->
+            <Form method="Post" Action="">
               
             
             <div class="total-title">Total</div>
@@ -315,7 +315,7 @@ if(isset($_POST['delete']))
                   ?> 
             <?php
               $slno=1;
-                $result=mysqli_query($con,"SELECT  `Subtotal` FROM `cart` WHERE User_id='22222'");
+                $result=mysqli_query($con,"SELECT  * FROM `cart` WHERE User_id='22222'");
                 $sum=0;
                 while($row=mysqli_fetch_array($result))
                 {
@@ -323,28 +323,72 @@ if(isset($_POST['delete']))
                   
                   $subtotal=$row["Subtotal"];
                   $sum=$sum+$subtotal;
+                  ?>
+                  
+                  <input type="hidden"  name="User_id" value="<?php echo $row['User_id']; ?>">
+                  <input type="hidden"  name="Category_name" value="<?php echo $row["Category_name"]; ?>">
+                  <input type="hidden"  name="Product_name" value="<?php echo $row["ProductName"]; ?>">
+                  <input type="hidden"  name="ProductDetails" value="<?php echo $row["Product"]; ?>">
+
+                  <input type="hidden"  name="Price" value="<?php echo $row["price"]; ?>">
+                  <input type="hidden"  name="Quantity" value="<?php echo $row["Quantity"]; ?>">
+                  <input type="hidden"  name="Subtotal" value="<?php echo $row["Subtotal"]; ?>">
+                  <input type="hidden"  name="Image" value="<?php echo $row["Image"]; ?>">
+
+                  <?php
 
                 }
-                $result=mysqli_query($con,"SELECT  `Subtotal` FROM `customized_cart` WHERE User_id='22222'");
-             
+
+                ?>
+                <?php 
+                
+                $result=mysqli_query($con,"SELECT  * FROM `customized_cart` WHERE User_id='22222'");
+                
                 while($row3=mysqli_fetch_array($result))
                 {
-  
+                  
                   
                   $subtotal=$row3["Subtotal"];
                   $sum=$sum+$subtotal;
+                  ?>
+
+                  <!-- <input type="hidden"  name="cart_id" value="<?php echo $row["id"]; ?>"> -->
+
+
+
+                  <!-- <input type="hidden"  name="Customizedcart_id" value="<?php echo $row3["id"]; ?>"> -->
+                  <input type="hidden"  name="User_id" value="<?php echo $row3['User_id']; ?>">
+                  <input type="hidden"  name="Category_name" value="<?php echo $row3["Category_name"]; ?>">
+                  <input type="hidden"  name="Product_name" value="<?php echo $row3["ProductName"]; ?>">
+                  <input type="hidden"  name="ProductDetails" value="<?php echo $row3["Product"]; ?>">
+
+                  <input type="hidden"  name="Price" value="<?php echo $row3["Price"]; ?>">
+                  <input type="hidden"  name="Quantity" value="<?php echo $row3["Quantity"]; ?>">
+                  <input type="hidden"  name="Subtotal" value="<?php echo $row3["Subtotal"]; ?>">
+                  <input type="hidden"  name="Image" value="<?php echo $row3["Image"]; ?>">
+                  
+                  <?php
+                  $cart_id=$row3['id'];
+                  
+                 
   
                 }
               
                   
                   ?>
-                  <input type="hidden"  name="cart_id" value="<?php echo $row["id"]; ?>">
-                  <input type="hidden"  name="Customizedcart_id" value="<?php echo $row3["id"]; ?>">
-
             <div class="total-value final-value" id="basket-total"><?php echo $sum;?></div>
           </div>
           <div class="summary-checkout">
-            <button type="Submit" name="Checkout" class="checkout-cta">Go to Secure Checkout</button>
+            <button type="Submit" name="Checkout" class="checkout-cta">
+              
+            <?php 
+            echo "d";
+            ?>
+              <a href="Booking.php?cart_id='<?php echo $row['id'];?>'">
+
+                Go to Secure Checkout
+              </a>
+          </button>
             
           </div>
           </Form>
